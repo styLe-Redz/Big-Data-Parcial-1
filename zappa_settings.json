@@ -1,0 +1,39 @@
+{
+    "dev": {
+        "app_function": "leer_archivo.f",
+        "keep_warm": false,
+        "role_name": "LabRole",
+        "manage_roles": false,
+        "apigateway_enabled": false,
+        "aws_region": "us-east-1",
+        "project_name": "Parcial-1",
+        "runtime": "python3.8",
+        "s3_bucket": "landing-casas-1032498680",
+        "events": [{
+           "function": "leer.f", // The function to execute
+           "expression": "cron(00 09 * * ? *)" // When to execute it (in cron or rate format)
+       }]
+    },
+    
+    "dev2": {
+        "app_function": "recibir_archivo.f",
+        "keep_warm": false,
+        "role_name": "LabRole",
+        "manage_roles": false,
+        "apigateway_enabled": false,
+        "aws_region": "us-east-1",
+        "project_name": "Parcial-1",
+        "runtime": "python3.8",
+        "s3_bucket": "casas-fina-1032498680",
+        "events": [{
+            "function": "recibe.f",
+            "event_source": {
+                  "arn":  "arn:aws:s3:::landing-casas-1032498680",
+                  "events": [
+                    "s3:ObjectCreated:*" 
+                  ]
+               }
+            }]
+    }
+    
+}
