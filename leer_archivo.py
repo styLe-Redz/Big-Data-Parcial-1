@@ -28,4 +28,3 @@ def f():
     s3.put_object(Body=html,
                   Bucket='landing-casas-1032498680',
                   Key=str(fecha_actual)+".html")
-    return "hola"
